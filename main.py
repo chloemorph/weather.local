@@ -13,10 +13,9 @@ history = {'temperature':[],'pressure':[]}
 def log(t,p) :
   out = open('enviro.log', 'w')
   s = "%s | %s" % (t,p)
-  print(s)
   history['temperature'].append(t)
   history['pressure'].append(p)
-  out.write(s)
+#  out.write(s) # Recording..
 
 def draw_typo(t,p) :
   t_str = round(t, 3)
@@ -34,7 +33,7 @@ def update() :
 try:
   while True:
     update()
-    time.sleep(1)
+    time.sleep(0.25)
 except KeyboardInterrupt:
   leds.off()
 
