@@ -9,23 +9,26 @@ print(weather.pressure())
 
 # Log values
 
-out = open('enviro.log', 'w')
-out.write('light\trgb\tmotion\theading\ttemp\tpress\n')
+def log(temp,press) :
+    out = open('enviro.log', 'w')
+    s = "%s | %s" % (temp,press)
+    out.write(s)
 
+def update() : 
+    print "working"
+    lux = light.light()
+    leds.on()
+    rgb = str(light.rgb())[1:-1].replace(' ', '')
+    leds.off()
+    log(weather.temperature(),weather.pressure())
+    sphd.clear()
+    sphd.set_pixel(0, 0, 0.25)
+    sphd.show()
+
+# Run
 try:
     while True:
-        lux = light.light()
-        leds.on()
-        rgb = str(light.rgb())[1:-1].replace(' ', '')
-        leds.off()
-        acc = str(motion.accelerometer())[1:-1].replace(' ', '')
-        heading = motion.heading()
-        temp = weather.temperature()
-        press = weather.pressure()
-        out.write('%f\t%s\t%s\t%f\t%f\t%f\n' % (lux, rgb, acc, heading, temp, press))
-        sphd.clear()
-        sphd.set_pixel(x, y, 0.25)
-        sphd.show()
+        update()
         time.sleep(1)
 except KeyboardInterrupt:
     leds.off()
