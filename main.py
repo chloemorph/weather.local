@@ -1,33 +1,40 @@
 import time
 import typography
+import graph
 import scrollphathd as sphd
 from envirophat import light, motion, weather, leds
 
+# History
+
+history = {'temperature':[],'pressure':[]}
+
 # Log values
 
-def log(temp,press) :
-    out = open('enviro.log', 'w')
-    s = "%s | %s" % (temp,press)
-    print(s)
-    out.write(s)
+def log(t,p) :
+  out = open('enviro.log', 'w')
+  s = "%s | %s" % (t,p)
+  print(s)
+  history['temperature'].append(t)
+  history['pressure'].append(p)
+  out.write(s)
 
-def draw(t,p) :
-    t_str = round(t, 3)
-    sphd.clear()
-    typography.write("%s" % (t_str))
-    sphd.show()
+def draw_typo(t,p) :
+  t_str = round(t, 3)
+  typography.write("%s" % (t_str))
 
 def update() :
-    t = weather.temperature()
-    p = weather.pressure()
-    log(t,p)
-    draw(t,p)
+  sphd.clear()
+  t = weather.temperature()
+  p = weather.pressure()
+  log(t,p)
+  graph.draw(history['temperature'])
+  sphd.show()
 
 # Run
 try:
-    while True:
-        update()
-        time.sleep(1)
+  while True:
+    update()
+    time.sleep(1)
 except KeyboardInterrupt:
-    leds.off()
-    out.close()
+  leds.off()
+
