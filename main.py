@@ -1,5 +1,7 @@
 import scrollphathd as sphd
 import time
+import typography
+
 from envirophat import light, motion, weather, leds
 
 print light.light()
@@ -14,15 +16,17 @@ def log(temp,press) :
     s = "%s | %s" % (temp,press)
     out.write(s)
 
-def update() : 
-    print "working"
+def draw(str) :
+    typography.write(str)
+
+def update() :
     lux = light.light()
     leds.on()
     rgb = str(light.rgb())[1:-1].replace(' ', '')
     leds.off()
     log(weather.temperature(),weather.pressure())
     sphd.clear()
-    sphd.set_pixel(0, 0, 0.25)
+    draw("+2-3")
     sphd.show()
 
 # Run
