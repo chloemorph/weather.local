@@ -30,6 +30,8 @@ def draw(i,c):
         a = [[1,1],[1,2],[1,3],[0,2],[2,2]]
     elif c == "-":
         a = [[0,2],[1,2],[2,2]]
+    elif c == ".":
+        a = [[1,4]]
     else:
         a = [[0,0],[1,1],[2,2]]
     draw_pixels(a,i * 4)
@@ -37,5 +39,6 @@ def draw(i,c):
 def write(str):
     print(str)
     for i,c in enumerate(str):
+        if i > 3: break
         draw(i,c)
 
