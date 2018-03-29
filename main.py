@@ -29,7 +29,7 @@ def update(timer) :
     s = round(t if (timer/5) % 2 == 0 else p,3)
     typography.write("%s" % s)
   else:
-    graph.draw(history['temperature'])
+    graph.draw(history['temperature' if (timer/5) % 2 == 0 else 'pressure'])
   sphd.show()
   # Trim history
   history['temperature'] = history['temperature'][-60:]

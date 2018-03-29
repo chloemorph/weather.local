@@ -37,7 +37,6 @@ def draw(i,c):
     draw_pixels(a,i * 4)
 
 def write(str):
-    print(str)
     for i,c in enumerate(str):
         if i > 3: break
         draw(i,c)
