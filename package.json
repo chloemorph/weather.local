@@ -1,0 +1,19 @@
+{
+  "name": "weather.local",
+  "version": "1.0.0",
+  "description": "This Raspberry Pi projects creates a IoT API for Pimoroni's [Enrivo pHat](https://shop.pimoroni.com/products/enviro-phat), accessible to the network with `weather.local:8080/index.json`.",
+  "main": "serve.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hundredrabbits/weather-station.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hundredrabbits/weather-station/issues"
+  },
+  "homepage": "https://github.com/hundredrabbits/weather-station#readme"
+}
