@@ -1,6 +1,6 @@
 # weather.local
 
-This Raspberry Pi projects creates a IoT API for Pimoroni's [Enrivo pHat](https://shop.pimoroni.com/products/enviro-phat), at `http://weather.local/index.json`.
+This Raspberry Pi projects creates a IoT API for Pimoroni's [Enrivo pHat](https://shop.pimoroni.com/products/enviro-phat), versioned with [Dat](https://github.com/datproject/dat). The API is accessible at `http://weather.local/index.json`, the sensor data is recorded through the Dat History, accessible with `http://weather.local/index.json/?version=10`.
 
 ## Create the SD Card
 
