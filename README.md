@@ -111,7 +111,7 @@ sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-po
 Added the scheduled tasks with `crontab -e`.
 
 ```
-
+*/5 * * * * sudo python ~/weather.local/record.py
 ```
 
 ### Start API
