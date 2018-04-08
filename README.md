@@ -1,6 +1,6 @@
 # weather.local
 
-This Raspberry Pi projects creates a IoT API for Pimoroni's [Enrivo pHat](https://shop.pimoroni.com/products/enviro-phat), accessible to the network with `weather.local:8080/index.json`.
+This Raspberry Pi projects creates a IoT API for Pimoroni's [Enrivo pHat](https://shop.pimoroni.com/products/enviro-phat), at `http://weather.local/index.json`.
 
 ## Create the SD Card
 
@@ -37,18 +37,12 @@ network={
 
 ## Setup Basics
 
-### Find the device's IP
-
-```
-ping raspberrypi.local
-```
-
 ### Connect to the device
 
 The device's password should be `raspberry`.
 
 ```
-ssh pi@192.168.1.73
+ssh pi@raspberrypi.local
 ```
 
 ### Setup
@@ -110,9 +104,21 @@ sudo npm install forever -g
 sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
 ```
 
-## Serve API
+## Setup API
+
+### Cron
+
+Added the scheduled tasks with `crontab -e`.
 
 ```
+
+```
+
+### Start API
+```
+cd ~
+git clone https://github.com/hundredrabbits/weather.local.git
+cd weather.local/
 forever start ./serve.js
 ```
 
